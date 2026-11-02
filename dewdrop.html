@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dewdrop | Beauty Finder</title>
+<style>
+:root{--bg:#f6f0e6;--card:#fffaf2;--ink:#46372d;--mut:#8a7766;--ln:#e5d8c6;--ac:#a67c52;--acink:#fffaf2;--blush:#ecd5c8;--sale:#a2503a;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1813;--card:#27201a;--ink:#f1e6d8;--mut:#b4a08b;--ln:#3b3128;--ac:#d2ab81;--acink:#1d1813;--blush:#3a2d26;--sale:#e69a82;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d1813;--card:#27201a;--ink:#f1e6d8;--mut:#b4a08b;--ln:#3b3128;--ac:#d2ab81;--acink:#1d1813;--blush:#3a2d26;--sale:#e69a82;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;min-height:100vh}
+.serif,h1,h2,.brand{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--ln);padding:16px 0}
+header .wrap{display:flex;justify-content:space-between;align-items:baseline}
+.brand{font-size:24px;letter-spacing:.04em}
+.tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+section{padding:44px 0 56px}
+h1{font-size:clamp(34px,6vw,52px);line-height:1.1;margin:0 0 10px;font-style:italic}
+.lead{color:var(--mut);font-size:17px;margin:0 0 30px;max-width:520px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pick{display:flex;gap:16px;align-items:center;text-align:left;background:var(--card);border:1px solid var(--ln);border-radius:6px;padding:20px;color:var(--ink);font:inherit;cursor:pointer;position:relative}
+.pick:hover{border-color:var(--ac)}
+.pick[aria-pressed="true"]{border-color:var(--ac);background:var(--blush);box-shadow:inset 0 0 0 1px var(--ac)}
+.pick .ic{width:46px;height:46px;border:1px solid var(--ln);border-radius:50%;display:grid;place-items:center;flex:none;background:var(--bg)}
+.pick svg{width:22px;height:22px;fill:none;stroke:var(--ac);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.pick b{display:block;font-family:Georgia,serif;font-weight:400;font-size:19px}
+.pick small{color:var(--mut)}
+.pick .ck{position:absolute;top:12px;right:14px;font-size:13px;color:var(--ac);opacity:0}
+.pick[aria-pressed="true"] .ck{opacity:1}
+.bar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:26px}
+.hint{color:var(--mut);font-size:14px}
+button.main{background:var(--ac);color:var(--acink);border:0;border-radius:4px;padding:13px 28px;font:inherit;font-weight:600;letter-spacing:.04em;cursor:pointer}
+button.main:disabled{opacity:.4;cursor:not-allowed}
+button.ghost{background:none;border:1px solid var(--ln);border-radius:4px;color:var(--ink);padding:9px 16px;font:inherit;cursor:pointer}
+button.ghost:hover{border-color:var(--ac)}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{border:1px solid var(--ac);color:var(--ac);border-radius:20px;padding:2px 12px;font-size:13px}
+.tools{display:flex;gap:16px;flex-wrap:wrap;align-items:center;padding:14px 0;border-top:1px solid var(--ln);border-bottom:1px solid var(--ln);margin-bottom:8px;font-size:14px}
+.tools select{background:var(--card);color:var(--ink);border:1px solid var(--ln);border-radius:4px;padding:6px 8px;font:inherit}
+.tools label{display:flex;gap:8px;align-items:center;cursor:pointer}
+.tools input{accent-color:var(--ac);width:16px;height:16px}
+h2{font-size:26px;margin:34px 0 14px;font-style:italic}
+.prods{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:4px;position:relative}
+.brand2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.pn{font-family:Georgia,serif;font-size:18px;line-height:1.25}
+.pd{color:var(--mut);font-size:14px}
+.price{margin-top:8px;display:flex;gap:10px;align-items:baseline;font-variant-numeric:tabular-nums}
+.price b{font-size:20px;font-weight:600}
+.price s{color:var(--mut);font-size:14px}
+.price .now{color:var(--sale)}
+.badge{position:absolute;top:0;right:0;background:var(--sale);color:#fff;font-size:12px;letter-spacing:.06em;padding:3px 10px;border-radius:0 6px 0 6px}
+.where{border-top:1px solid var(--ln);margin-top:10px;padding-top:10px;font-size:14px}
+.where span{color:var(--mut)}
+.empty{color:var(--mut);padding:20px 0}
+.note{font-size:13px;color:var(--mut);border-top:1px solid var(--ln);padding-top:16px;margin-top:40px}
+[hidden]{display:none!important}
+@media(max-width:560px){.grid{grid-template-columns:1fr}section{padding-top:30px}}
+
+</style>
+</head>
+<body>
+<header><div class="wrap"><span class="brand">Dewdrop</span><span class="tag">Beauty finder</span></div></header>
+
+<section id="start"><div class="wrap">
+  <h1>Hey there, gorgeous.</h1>
+  <p class="lead">What are you looking for today? Choose one or as many as you like, then continue.</p>
+  <div class="grid" id="cats"></div>
+  <div class="bar">
+    <button class="main" id="go" disabled>Continue</button>
+    <span class="hint" id="hint">Nothing selected yet</span>
+  </div>
+</div></section>
+
+<section id="results" hidden><div class="wrap">
+  <div class="top">
+    <div><h1 style="font-size:clamp(28px,5vw,40px)">Your picks</h1><div class="chips" id="chips"></div></div>
+    <button class="ghost" id="back">Change my selection</button>
+  </div>
+  <div class="tools">
+    <label>Sort <select id="sort"><option value="rec">Recommended</option><option value="lo">Price, low to high</option><option value="hi">Price, high to low</option></select></label>
+    <label><input type="checkbox" id="saleOnly"> Sale items only</label>
+  </div>
+  <div id="out"></div>
+  <p class="note">Preview data only. Prices, stores and sales shown here are sample values to demonstrate the app. A live version would read them from a real product and store feed.</p>
+</div></section>
+
+<script>
+(function(){
+'use strict';
+var ICON={
+ makeup:'<path d="M9 21v-7h6v7zM10 14V9l2-5 2 5v5"/>',
+ skincare:'<path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/>',
+ hair:'<path d="M4 8c3-3 5 3 8 0s5 3 8 0M4 14c3-3 5 3 8 0s5 3 8 0"/>',
+ lingerie:'<path d="M12 12L5 8v8l7-4zm0 0l7-4v8l-7-4z"/>'
+};
+var CATS=[
+ {id:'makeup',name:'Makeup',note:'Lips, face and eyes'},
+ {id:'skincare',name:'Skincare',note:'Cleanse, treat and protect'},
+ {id:'hair',name:'Hair care',note:'Wash, treat and style'},
+ {id:'lingerie',name:'Bras and underwear',note:'Everyday comfort'}
+];
+/* The product feed is loaded from data/products.json, in the same way an app would call a real API. */
+var DATA=[{"c": "makeup", "b": "Revlon", "n": "Super Lustrous Lipstick", "d": "Cherries in the Snow, classic red", "p": 159, "s": "Edgars", "l": "Wernhil Park", "off": 0, "id": "p01"}, {"c": "makeup", "b": "Maybelline", "n": "Fit Me Matte Foundation", "d": "Natural beige, 30 ml", "p": 145, "s": "Clicks", "l": "Maerua Mall", "off": 15, "id": "p02"}, {"c": "makeup", "b": "L’Oréal Paris", "n": "Voluminous Mascara", "d": "Black, volume and length", "p": 179, "s": "Woolworths", "l": "Maerua Mall", "off": 0, "id": "p03"}, {"c": "makeup", "b": "Essence", "n": "Blush Duo", "d": "Peach and rose", "p": 69, "s": "Clicks", "l": "Grove Mall", "off": 20, "id": "p04"}, {"c": "skincare", "b": "CeraVe", "n": "Hydrating Cleanser", "d": "Normal to dry skin, 236 ml", "p": 245, "s": "Clicks", "l": "Maerua Mall", "off": 10, "id": "p05"}, {"c": "skincare", "b": "Nivea", "n": "Daily Essentials Moisturiser", "d": "SPF 15, 50 ml", "p": 85, "s": "Woolworths", "l": "Wernhil Park", "off": 0, "id": "p06"}, {"c": "skincare", "b": "The Ordinary", "n": "Niacinamide 10% + Zinc 1%", "d": "Serum, 30 ml", "p": 189, "s": "Clicks", "l": "Wernhil Park", "off": 0, "id": "p07"}, {"c": "skincare", "b": "Neutrogena", "n": "Hydro Boost Water Gel", "d": "Face moisturiser, 50 ml", "p": 265, "s": "Clicks", "l": "Maerua Mall", "off": 25, "id": "p08"}, {"c": "hair", "b": "Dove", "n": "Intensive Repair Shampoo", "d": "400 ml", "p": 69, "s": "Shoprite", "l": "Grove Mall", "off": 0, "id": "p09"}, {"c": "hair", "b": "Garnier", "n": "Whole Blends Hair Mask", "d": "300 ml", "p": 95, "s": "Clicks", "l": "Maerua Mall", "off": 15, "id": "p10"}, {"c": "hair", "b": "TRESemmé", "n": "Keratin Smooth Conditioner", "d": "400 ml", "p": 78, "s": "Clicks", "l": "Wernhil Park", "off": 0, "id": "p11"}, {"c": "hair", "b": "Cantu", "n": "Shea Butter Leave-In Conditioner", "d": "Curl cream, 340 g", "p": 135, "s": "Clicks", "l": "Grove Mall", "off": 10, "id": "p12"}, {"c": "lingerie", "b": "Playtex", "n": "Cotton Comfort Bra", "d": "Wire-free, sizes 32 to 38", "p": 199, "s": "Edgars", "l": "Wernhil Park", "off": 20, "id": "p13"}, {"c": "lingerie", "b": "Woolworths", "n": "Seamless Briefs, 3 pack", "d": "Soft stretch, sizes S to XL", "p": 149, "s": "Woolworths", "l": "Maerua Mall", "off": 0, "id": "p14"}, {"c": "lingerie", "b": "Triumph", "n": "T-shirt Bra", "d": "Padded, smooth cup", "p": 389, "s": "Edgars", "l": "Wernhil Park", "off": 0, "id": "p15"}, {"c": "lingerie", "b": "Mr Price", "n": "Cotton Bikini Briefs, 5 pack", "d": "Everyday cotton", "p": 129, "s": "Mr Price", "l": "Grove Mall", "off": 25, "id": "p16"}];
+var API={products:function(cats){
+  return Promise.resolve(DATA.filter(function(x){return cats.indexOf(x.c)>-1}).map(function(x){
+    return Object.assign({},x,{now:Math.round(x.p*(1-x.off/100))});
+  }));
+}};
+
+var $=function(i){return document.getElementById(i)};
+var chosen=[],items=[];
+function money(n){return 'N$'+n.toLocaleString('en-US')}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function catName(id){return CATS.filter(function(c){return c.id===id})[0].name}
+
+function buildCats(){
+  $('cats').innerHTML=CATS.map(function(c){
+    return '<button class="pick" type="button" aria-pressed="false" data-id="'+c.id+'"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">'+ICON[c.id]+'</svg></span><span><b>'+c.name+'</b><small>'+c.note+'</small></span><span class="ck">Selected</span></button>'}).join('');
+}
+function updateStart(){
+  var n=chosen.length;
+  $('go').disabled=!n;
+  $('go').textContent=n>1?'Continue with '+n+' choices':'Continue';
+  $('hint').textContent=n?(n===1?'1 selected. You can add more or continue.':n+' selected. Ready when you are.'):'Nothing selected yet';
+}
+$('cats').addEventListener('click',function(e){
+  var b=e.target.closest('.pick');if(!b)return;
+  var id=b.getAttribute('data-id'),i=chosen.indexOf(id);
+  if(i>-1)chosen.splice(i,1);else chosen.push(id);
+  b.setAttribute('aria-pressed',i>-1?'false':'true');updateStart();
+});
+$('go').addEventListener('click',function(){location.hash='results'});
+$('back').addEventListener('click',function(){location.hash='start'});
+
+function drawResults(){
+  var sale=$('saleOnly').checked,sort=$('sort').value;
+  var html='';
+  chosen.forEach(function(cid){
+    var list=items.filter(function(x){return x.c===cid&&(!sale||x.off>0)});
+    if(sort==='lo')list.sort(function(a,b){return a.now-b.now});
+    if(sort==='hi')list.sort(function(a,b){return b.now-a.now});
+    html+='<h2>'+esc(catName(cid))+'</h2>';
+    html+=list.length?'<div class="prods">'+list.map(function(x){
+      return '<article class="card">'+(x.off?'<span class="badge">'+x.off+'% OFF</span>':'')+
+      '<span class="brand2">'+esc(x.b)+'</span><span class="pn">'+esc(x.n)+'</span><span class="pd">'+esc(x.d)+'</span>'+
+      '<div class="price">'+(x.off?'<b class="now">'+money(x.now)+'</b><s>'+money(x.p)+'</s>':'<b>'+money(x.p)+'</b>')+'</div>'+
+      '<div class="where"><span>Find it at</span><br>'+esc(x.s)+', '+esc(x.l)+'</div></article>'}).join('')+'</div>':'<p class="empty">No sale items in this category right now.</p>';
+  });
+  $('out').innerHTML=html;
+}
+function show(){
+  var r=location.hash==='#results'&&chosen.length;
+  $('start').hidden=!!r;$('results').hidden=!r;
+  window.scrollTo(0,0);
+  if(!r){if(location.hash==='#results')location.hash='start';return}
+  $('chips').innerHTML=chosen.map(function(c){return '<span class="chip">'+esc(catName(c))+'</span>'}).join('');
+  $('out').innerHTML='<p class="empty">Finding your picks...</p>';
+  API.products(chosen).then(function(r){items=r;drawResults()}).catch(function(e){$('out').innerHTML='<p class="empty">'+esc(e.message)+' If you opened the file directly, run it through a web server or GitHub Pages.</p>'});
+}
+$('sort').addEventListener('change',drawResults);
+$('saleOnly').addEventListener('change',drawResults);
+window.addEventListener('hashchange',show);
+buildCats();updateStart();show();
+})();
+
+</script>
+</body>
+</html>
