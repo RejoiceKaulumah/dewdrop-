@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dewdrop | Beauty Finder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="wrap"><span class="brand">Dewdrop</span><span class="tag">Beauty finder</span></div></header>
+
+<section id="start"><div class="wrap">
+  <h1>Hey there, gorgeous.</h1>
+  <p class="lead">What are you looking for today? Choose one or as many as you like, then continue.</p>
+  <div class="grid" id="cats"></div>
+  <div class="bar">
+    <button class="main" id="go" disabled>Continue</button>
+    <span class="hint" id="hint">Nothing selected yet</span>
+  </div>
+</div></section>
+
+<section id="results" hidden><div class="wrap">
+  <div class="top">
+    <div><h1 style="font-size:clamp(28px,5vw,40px)">Your picks</h1><div class="chips" id="chips"></div></div>
+    <button class="ghost" id="back">Change my selection</button>
+  </div>
+  <div class="tools">
+    <label>Sort <select id="sort"><option value="rec">Recommended</option><option value="lo">Price, low to high</option><option value="hi">Price, high to low</option></select></label>
+    <label><input type="checkbox" id="saleOnly"> Sale items only</label>
+  </div>
+  <div id="out"></div>
+  <p class="note">Preview data only. Prices, stores and sales shown here are sample values to demonstrate the app. A live version would read them from a real product and store feed.</p>
+</div></section>
+
+<script src="app.js"></script>
+</body>
+</html>
