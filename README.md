@@ -1,93 +1,77 @@
-Dewdrop 🌸
 
-A beauty finder web app with a soft, neutral design. Dewdrop allows shoppers to choose what they are looking for (makeup, skincare, hair care, bras and underwear), continue to a second view, and browse matching products with prices, sale markers, and store locations.
+# Dewdrop 🌸
 
-Built by Rejoice Kaulumah as a practice project.
+A beauty finder web app with a soft, neutral design. A shopper chooses what she is looking for (makeup, skincare, hair care, bras and underwear), continues to a second view, and sees matching products with prices, sale markers, and the store where each item can be found.
 
-Features
-Multi-select category screen with a live selection hint.
-Continue button that stays disabled until at least one category is selected.
-Results view grouped by selected category.
-Product sorting by price.
-Filter to show sale items only.
-Product cards displaying:
-Brand
-Product name
-Description
-Price
-Discount
-Store and location
-Responsive layout.
-Light and dark mode.
-Keyboard-friendly buttons and navigation.
-Fully self-contained application with no build step, server, or external files required.
-Files
-File	Description
-index.html	Contains the entire application, including page structure, styling, logic, and sample product data.
-dewdrop.html	An identical copy of index.html under the project name.
-README.md	Project documentation and setup instructions.
-Run Locally
-Download or clone the repository.
-Open the downloaded project folder.
-Double-click index.html or dewdrop.html.
-The application will open directly in your browser.
+**Built by Rejoice Kaulumah as a practice project.**
 
-No installation, build process, or server is required.
+## Features
 
-Publish on GitHub Pages
+- Multi-select category screen with a live selection hint and a Continue button that stays disabled until at least one choice is made.
+- Results view grouped by chosen category, with sorting by price and a sale-items-only filter.
+- Product cards showing brand, name, description, price, discount, and store location.
+- Responsive layout, light and dark mode, and keyboard-friendly buttons.
+- Works as a single self-contained file: no build step, no server, and no external files needed.
 
-To make Dewdrop accessible online using GitHub Pages:
+## Files
 
-Upload index.html to a public GitHub repository.
-Open the repository's Settings.
-Navigate to Pages.
-Under Build and deployment, select Deploy from a branch.
-Select the main branch and / (root) folder.
-Click Save.
+| File | Role |
+|---|---|
+| `index.html` | The whole app: page structure, styling, logic, and sample product data. |
+| `dewdrop.html` | An identical copy of `index.html` under the project name. |
+| `README.md` | This file. |
 
-Your website will be available at:
+## Run Locally
 
-https://<your-username>.github.io/<repository-name>/
+1. Download the repository.
+2. Open the project folder.
+3. Double-click `index.html` (or `dewdrop.html`).
+4. The app opens in your browser and works straight away.
 
-Note: GitHub Pages automatically opens index.html as the default page. The dewdrop.html file can also be accessed directly by adding /dewdrop.html to your website URL.
+## Publish on GitHub Pages
 
-Editing the Products
+1. Upload `index.html` to a public repository.
+2. Go to **Settings**, then **Pages**.
+3. Under **Source**, choose **Deploy from a branch**.
+4. Select `main` and `/ (root)`.
+5. Click **Save**.
 
-The sample product list is located inside the <script> section of index.html, in an array called DATA.
+The site appears at:
 
-Each product contains the following fields:
+`https://<your-username>.github.io/<repository-name>/`
 
-Field	Description
-c	Product category: makeup, skincare, hair, or lingerie.
-b	Product brand.
-n	Product name.
-d	Product description.
-p	Regular price in Namibian dollars (NAD).
-off	Discount percentage. Use 0 if there is no discount.
-s	Store name.
-l	Store location.
-id	Unique product ID.
+**Note:** GitHub Pages only opens a file automatically when it is named `index.html`. `dewdrop.html` is reachable at `.../dewdrop.html`.
 
-If you make changes to the product data in index.html, make sure to apply the same changes to dewdrop.html so both files remain identical.
+## Editing the Products
 
-Alternatively, you can remove one of the files to avoid maintaining two copies.
+The product list sits inside the `<script>` section of `index.html`, in an array called `DATA`.
 
-Important Note
+Each product has:
 
-All product prices, stores, and discounts included in this repository are sample values created for demonstration purposes. They do not represent real products, retailers, or current offers.
+| Field | Meaning |
+|---|---|
+| `c` | Category: makeup, skincare, hair, or lingerie. |
+| `b` | Brand. |
+| `n` | Product name. |
+| `d` | Product description. |
+| `p` | Regular price in Namibian dollars (NAD). |
+| `off` | Discount percentage (`0` for no discount). |
+| `s` | Store name. |
+| `l` | Store location. |
+| `id` | Unique product ID. |
 
-A production version of Dewdrop would require a reliable data source, such as retailer partnerships, product APIs, or an automatically updated product feed.
+If you change a product in `index.html`, make the same change in `dewdrop.html` so the two copies stay identical, or delete one of them.
 
-Possible Future Improvements
+## Important Note
 
-Some ideas for expanding Dewdrop include:
+All prices, stores, and sales in this repository are sample values created for demonstration. They are not real offers.
 
-Connect to a real product API or retailer product feed.
-Add a product search feature.
-Introduce a wishlist so users can save their favourite products.
-Add a store map to help shoppers find products in physical locations.
-Include more shopping categories.
-Add product images.
-Separate the application into HTML, CSS, JavaScript, and JSON files for easier maintenance.
+A production version would need a real data source, such as retailer partnerships or a product feed that is kept up to date.
 
-Dewdrop — Making beauty discovery a little easier. 🌷
+## Possible Next Steps
+
+- Connect to a real product API or retailer feed.
+- Add search, a wishlist, and a store map.
+- Add more categories and product images.
+- Split the code back into separate HTML, CSS, JavaScript, and JSON files for easier maintenance.
+```
