@@ -2,7 +2,7 @@
 
 A beauty finder web app with a soft, neutral design. A shopper chooses what she is looking for (makeup, skincare, hair care, bras and underwear), continues to a second view, and sees matching products with prices, sale markers and the store where each item can be found.
 
-Built by Rejoice Kaulumah as a practice project with AI assistance.
+Built by Rejoice Kaulumah as a practice project
 
 ## Features
 
